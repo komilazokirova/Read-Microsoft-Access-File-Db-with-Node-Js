@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Data Display</title>
+</head>
+<body>
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Inson Psixologiyasi</th>
+            <th>Kasbi</th>
+            <th>Hobbisi</th>
+            <th>Faoliyati</th>
+            <th>Rangi</th>
+            <th>Shakillari va Rasmlari</th>
+            <th>Musiqasi</th>
+            <th>Videosi</th>
+            <th>Gif</th>
+            <!-- Add more columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Data will be inserted here -->
+    </tbody>
+</table>
+
+<script>
+fetch('http://localhost:3000/data')
+.then(response => response.json())
+.then(data => {
+    const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    data.forEach(row => {
+        const newRow = tableBody.insertRow();
+        // Adjust according to your DB columns
+        Object.values(row).forEach(text => {
+            const newCell = newRow.insertCell();
+            const newText = document.createTextNode(text);
+            newCell.appendChild(newText);
+        });
+    });
+})
+.catch(error => console.error('Error:', error));
+</script>
+
+</body>
+</html>

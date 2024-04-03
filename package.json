@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "node-adodb": "^5.0.3"
+  },
+  "build": {
+    "extraResources": [
+      "./assets/**",
+      {
+        "from": "./node_modules/node-adodb/lib/adodb.js",
+        "to": "adodb.js"
+      }
+    ]
+  }
+}
